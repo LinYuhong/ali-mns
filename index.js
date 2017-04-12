@@ -221,7 +221,8 @@ var AliMNS;
             var contentType = "";
             if (body) {
                 if (!headers["Content-Length"])
-                    headers["Content-Length"] = body.length;
+                    headers["Content-Length"] = new Buffer.Buffer(body, 'utf-8').length;
+                
                 if (!headers["Content-Type"])
                     headers["Content-Type"] = this._contentType;
                 contentType = headers["Content-Type"];
